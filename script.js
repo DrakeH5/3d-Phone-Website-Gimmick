@@ -19,13 +19,16 @@ window.addEventListener('resize', () => { //when the page is resized
 
 
 
-var geometry = new THREE.BoxGeometry(1, 5, 7); //creates "phone"
-var material = new THREE.MeshLambertMaterial({color: "black"}); //creates material
+const video = document.getElementById( 'video' );
+
+var geometry = new THREE.BoxGeometry(1, 6, 10); //creates "phone"
+var material = new THREE.MeshLambertMaterial({map: new THREE.VideoTexture( video )}); //creates material
 var phone = new THREE.Mesh(geometry, material); //creates a mesh out of our sphere and material
 phone.position.set(2, 0, -10)
 phone.rotation.y = -45
 
 scene.add(phone); //adds phone to the scene
+
 
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 500); //creates a light (color, intensity, distance)
@@ -39,3 +42,6 @@ var render = function() {
 }
 
 render();
+
+
+
