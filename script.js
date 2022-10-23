@@ -25,7 +25,7 @@ var geometry = new THREE.BoxGeometry(1, 6, 10); //creates "phone"
 var material = new THREE.MeshLambertMaterial({map: new THREE.VideoTexture( video )}); //creates material
 var phone = new THREE.Mesh(geometry, material); //creates a mesh out of our sphere and material
 phone.position.set(2, 0, -10)
-phone.rotation.y = -45
+phone.rotation.set(0, -45, 10)
 
 scene.add(phone); //adds phone to the scene
 
@@ -45,3 +45,7 @@ render();
 
 
 
+document.addEventListener("wheel", function(evt){
+    var direction = evt.deltaY / 100
+    phone.rotation.y -= (direction / (screen.height/10))*15
+})
